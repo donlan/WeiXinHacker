@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信历史消息管理小助手</title>
+
+
+    <script type="text/javascript" src="app/dependents/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="app/dependents/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="app/dependents/bootstrap/css/bootstrap.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="app/dependents/bootstrap/plugins/ie/html5shiv.js"></script>
+    <script src="app/dependents/bootstrap/plugins/ie/respond.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <script src="app/dependents/bootstrap/plugins/ie/json2.js"></script>
+    <![endif]-->
+    <!-- font-awesome -->
+    <link rel="stylesheet" type="text/css"
+          href="app/dependents/fontAwesome/css/font-awesome.min.css" media="all"/>
+    <!-- DLShouWen Grid -->
+    <script type="text/javascript" src="app/dlshouwen.grid.js"></script>
+    <script type="text/javascript" src="app/i18n/en.js"></script>
+    <link rel="stylesheet" type="text/css" href="app/dlshouwen.grid.css"/>
+    <!-- datePicker -->
+    <script type="text/javascript" src="app/dependents/datePicker/WdatePicker.js"
+            defer="defer"></script>
+    <link rel="stylesheet" type="text/css" href="app/dependents/datePicker/skin/WdatePicker.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="app/dependents/datePicker/skin/default/datepicker.css"/>
+
+</head>
+<body onload="init()">
+
+<h1 align="center">微信历史消息管理小助手</h1>
+
+<div id="wxListContainer"></div>
+<div id="gridToolBarContainer"></div>
+
+
+<script>
+
+
+
+    var datas = [];
+    var messageColumns = [{
+        id: "msgId",
+        title: '',
+        columnClass: 'text-center',
+        fastQuery: true,
+        hide: true
+    }, {
+        id: 'type',
+        title: '消息类型',
+        columnClass: 'text-center',
+        fastQuery: true
+    }, {
+        id: 'sender',
+        title: '发送者',
+        columnClass: 'text-center',
+        fastQuery: true
+    }, {
+        id: 'talker',
+        title: '接受者',
+        columnClass: 'text-center',
+        fastQuery: true
+    }, {
+        id: 'content',
+        title: '消息内容',
+        columnClass: 'text-center',
+        fastQuery: true
+    }, {
+        id: 'createTime',
+        title: '创建时间',
+        type: 'date',
+        format: 'yyyy-MM-dd hh:mm:ss',
+        otype: 'string',
+        oformat: 'yyyy-MM-dd hh:mm:ss',
+        columnClass: 'text-center',
+        fastQuery: true
+    }, {
+        id: 'action',
+        title: '操作',
+        resolution: function (value, record, column, grid, dataNo, columnNo) {
+            var index = Number(grid.pager.nowPage - 1) * Number(grid.pager.pageSize) +  Number(dataNo);
+            var content = '<span style="background:#00a2ca;padding:2px 10px;color:white;" onclick="deleteMessage('+index+ ')">删除</span>';
+            return content;
+        }
+    }
+    ];
+
+
+    var gridOption = {
+        lang: 'zh-cn',
+        ajaxLoad: false,
+        exportFileName: '微信历史消息',
+        datas: datas,
+        columns: messageColumns,
+        gridContainer: 'wxListContainer',
+        toolbarContainer: 'gridToolBarContainer',
+        tools: 'refresh|faseQuery|advanceQuery|print',
+        pageSize: 10,
+        pageSizeLimit: [10, 20, 50, 100]
+
+    };
+    var grid;
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function () {
+    console.log(xmlhttp.readyState+"  +  "+xmlhttp.status);
+        if (xmlhttp.readyState==4 && xmlhttp.status == 200) {
+            var result = JSON.parse(xmlhttp.responseText);
+            console.log(result);
+            var messageList = result['data'];
+            var size = result['size'];
+            if(size == 0)
+                size = messageList.length;
+            if (size == 0) {
+                alert("无数据");
+            } else {
+                datas.length = 0;
+                for (var i = 0; i < size; i++) {
+                    var msg = {};
+                    var isSend = messageList[i]['isSend'];
+
+                    msg.msgId = messageList[i]['msgId'];
+                    msg.type = messageList[i]['type'];
+                    if (isSend == 1) {
+                        msg.talker = messageList[i]['talker'];
+                        msg.sender = '自己';
+                    } else {
+                        msg.talker = '自己';
+                        msg.sender = messageList[i]['talker'];
+                    }
+                    msg.content = messageList[i]['content'];
+                    msg.createTime = $.fn.dlshouwen.grid.tools.dateFormat(new Date(messageList[i]['createTime']), 'yyyy-MM-dd hh:mm:ss');
+                    msg.action = '';
+                    console.log(msg);
+                    datas.push(msg);
+                }
+            }
+            if(grid == undefined){
+                grid = $.fn.dlshouwen.grid.init(gridOption);
+                grid.load();
+            }
+        }
+    };
+
+
+    function init(){
+        xmlhttp.open("GET", "/query/", true);
+        xmlhttp.send();
+    };
+
+
+
+    function remove(array,index)
+    {
+        if(index<=(array.length-1))
+        {
+            for(var i=index;i<array.length;i++)
+            {
+                array[i]=array[i+1];
+            }
+            array.length=array.length-1;
+        }
+        return array;
+    };
+
+
+   function deleteMessage(index) {
+        var message = datas[index];
+        console.log(message);
+        console.log(index);
+        remove(datas,index);
+        grid.refresh(true);
+        delAjax.open("GET","/delete/"+message['msgId'],true);
+        delAjax.send();
+    }
+
+    var delAjax;
+    if (window.XMLHttpRequest) {
+        delAjax = new XMLHttpRequest();
+    }
+    else {
+        delAjax = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    delAjax.onreadystatechange = function () {
+    if (delAjax.readyState==4 && delAjax.status == 200) {
+
+    }
+    else if(delAjax.status == 400){
+     alert("无法从手机中删除该记录");
+    }
+    }
+
+
+
+</script>
+
+</body>
+</html>

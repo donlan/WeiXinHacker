@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:gravity="center_vertical"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/send_cn_icon"
+        android:text="troublemakerlost"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="23:44"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:textSize="18sp"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/content_image"
+        android:layout_below="@id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/talker"
+        android:drawableLeft="@drawable/receiver_cn_icon"
+        android:drawablePadding="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/content_image"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:text="troublemakerlost"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        />
+    <View
+        android:layout_below="@id/talker"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#aaeeeeee"/>
+
+</RelativeLayout>

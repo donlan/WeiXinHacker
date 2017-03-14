@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <declare-styleable name="LabelTextView">
+        <attr name="bg_color" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="clickAnimation" format="boolean" />
+        <attr name="shadowRadius" format="dimension" />
+        <attr name="shadowColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+    </declare-styleable>
+
+
+</resources>
