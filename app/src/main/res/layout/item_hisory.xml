@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="12dp">
 
+    <dong.lan.weixinhacker.ui.custom.LabelTextView
+        android:id="@+id/msg_type"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:strokeWidth="1dp"
+        android:text="位置"
+        app:radius="2dp"
+        android:textSize="12sp"
+        android:textColor="@color/colorPrimary"
+        app:bg_color="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
+        android:layout_below="@id/msg_type"
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/send_cn_icon"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
         android:paddingBottom="8dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="8dp"
-        android:gravity="center_vertical"
-        android:drawablePadding="10dp"
-        android:drawableLeft="@drawable/send_cn_icon"
         android:text="troublemakerlost"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"
-        />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/time"
@@ -30,45 +45,47 @@
         android:text="23:44"
         android:textSize="14sp" />
 
+    <ImageView
+        android:id="@+id/content_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:minHeight="100dp"
+        android:minWidth="200dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
 
     <TextView
-        android:textSize="18sp"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/username"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@id/content_image"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp" />
 
-    <ImageView
-        android:visibility="gone"
-        android:id="@+id/content_image"
-        android:layout_below="@id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/talker"
-        android:drawableLeft="@drawable/receiver_cn_icon"
-        android:drawablePadding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/content_image"
+        android:layout_below="@id/content"
+        android:drawableLeft="@drawable/receiver_cn_icon"
+        android:drawablePadding="12dp"
         android:paddingBottom="8dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="8dp"
-        android:text="troublemakerlost"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        />
+        android:textSize="18sp" />
+
     <View
-        android:layout_below="@id/talker"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:background="#aaeeeeee"/>
+        android:layout_below="@id/talker"
+        android:background="#aaeeeeee" />
 
 </RelativeLayout>

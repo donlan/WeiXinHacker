@@ -52,7 +52,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:text="请在浏览器中访问以上网址,然后可以直接在浏览器中操作导出的微信历史消息记录"
+        android:text="请在浏览器中访问以上网址,然后可以直接在浏览器中操作导出的微信历史消息记录.\n如果上述地址不能正常访问请尝试访问:192.168.43.1:3999"
         android:textSize="20sp" />
 
 </LinearLayout>

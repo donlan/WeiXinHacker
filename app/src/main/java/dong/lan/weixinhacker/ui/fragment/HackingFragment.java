@@ -11,9 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+import com.orhanobut.logger.Logger;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +31,16 @@ import butterknife.OnClick;
 import dong.lan.permission.CallBack;
 import dong.lan.permission.Permission;
 import dong.lan.sqlcipher.Helper;
+import dong.lan.sqlcipher.MsgEvent;
 import dong.lan.weixinhacker.R;
 import dong.lan.weixinhacker.ui.base.BaseFragment;
 import dong.lan.weixinhacker.utils.HackingTool;
 import dong.lan.weixinhacker.utils.IMEIUtil;
 import dong.lan.sqlcipher.RootCMD;
 import dong.lan.sqlcipher.SPHelper;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by 梁桂栋 on 17-3-11 ： 下午8:55.
@@ -72,6 +85,7 @@ public class HackingFragment extends BaseFragment {
             dialog("你的手机没有root权限无法破解");
             return;
         }
+
         final String uin = weUinEt.getText().toString();
         if (TextUtils.isEmpty(uin)) {
             dialog("uin码不能为空");
@@ -85,7 +99,9 @@ public class HackingFragment extends BaseFragment {
             dialog("无法获取破解密码");
             return;
         }
-        SPHelper.instance().putString("pwd",pwd);
+        hackingResultTv.append("密码:" + pwd);
+
+        SPHelper.instance().putString("pwd", pwd);
         Permission.instance().check(new CallBack<List<String>>() {
             @Override
             public void onResult(List<String> result) {
@@ -130,13 +146,48 @@ public class HackingFragment extends BaseFragment {
         Permission.instance().check(new CallBack<List<String>>() {
             @Override
             public void onResult(List<String> result) {
-
+                if (TextUtils.isEmpty(SPHelper.instance().getString("uin"))) {
+                    Helper.instance().hackingUin();
+                }
             }
         }, getActivity(), per);
+        EventBus.getDefault().register(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("http://mmbiz.qpic.cn/mmemoticon/ajNVdqHZLLDPE4aaDRRPQGbmr2wjsMCZNkwypFVd6ZQUHBiapWBQliauGABRLDF9uf/0")
+                        .build();
+                try {
+                    Response response = client.newCall(request).execute();
+                    Logger.d(response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MsgEvent event) {
+        if (event.cmd == 0) {
+            hackingResultTv.append(event.data.toString());
+            hackingResultTv.append("\n");
+        } else if (event.cmd == 1) {
+            weUinEt.setText(event.data.toString());
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Permission.instance().handleRequestResult(getActivity(),requestCode,permissions,grantResults);
+        Permission.instance().handleRequestResult(getActivity(), requestCode, permissions, grantResults);
     }
 }

@@ -72,7 +72,6 @@ public class WebLinkActivity extends BaseBarActivity {
         mWifiAPBroadcastReceiver = new WifiAPBroadcastReceiver() {
             @Override
             public void onWifiApEnabled() {
-                Log.i(TAG, "======>>>onWifiApEnabled !!!");
                 if (!mIsInitialized) {
                     try {
                         AndroidMicroServer.MAIN_EXECUTOR.execute(createServer());

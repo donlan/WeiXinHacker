@@ -68,7 +68,19 @@
         id: 'content',
         title: '消息内容',
         columnClass: 'text-center',
-        fastQuery: true
+        fastQuery: true,
+        resolution: function (value, record, column, grid, dataNo, columnNo) {
+            var content ='';
+            if(value['type'] == 47){
+                var msg = value['content'];
+                var i = msg.indexOf('cdnurl')+8;
+                var j = msg.indexOf("designerid")-1;
+                content='<img src="'msg.substring(i,j)'">'
+            }else{
+                content='<p>'.value['content'].'</p>';
+            }
+            return content;
+        }
     }, {
         id: 'createTime',
         title: '创建时间',

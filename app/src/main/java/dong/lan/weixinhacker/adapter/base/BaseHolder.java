@@ -17,6 +17,7 @@ public abstract class BaseHolder<T>  extends RecyclerView.ViewHolder{
     public T value(){
         return data;
     }
+
     public BaseHolder(View itemView) {
         super(itemView);
     }

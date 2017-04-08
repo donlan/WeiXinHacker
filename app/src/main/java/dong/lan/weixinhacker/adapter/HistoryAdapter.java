@@ -1,11 +1,16 @@
 package dong.lan.weixinhacker.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -17,6 +22,7 @@ import dong.lan.weixinhacker.adapter.base.AbstractBinder;
 import dong.lan.weixinhacker.adapter.base.BaseHolder;
 import dong.lan.weixinhacker.adapter.base.BinderClickListener;
 import dong.lan.weixinhacker.ui.custom.LabelTextView;
+import dong.lan.weixinhacker.utils.ParseUtils;
 import dong.lan.weixinhacker.utils.TimeUtil;
 
 /**
@@ -53,6 +59,8 @@ public class HistoryAdapter extends AbstractBinder<Message> {
         @BindView(R.id.time)
         TextView time;
 
+        @BindView(R.id.msg_type)
+        LabelTextView type;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -67,7 +75,48 @@ public class HistoryAdapter extends AbstractBinder<Message> {
                 sender.setText("自己");
                 receiver.setText(message.talker);
             }
-            content.setText(message.content);
+            contentImage.setVisibility(View.GONE);
+            content.setText("");
+            if(message.type == Message.TYPE_BIG_EMOJI){
+                contentImage.setVisibility(View.VISIBLE);
+                Glide.with(itemView.getContext())
+                        .load(ParseUtils.msgImageUrl(message.content))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.one)
+                        .error(R.drawable.two)
+                        .into(contentImage);
+                content.setVisibility(View.VISIBLE);
+                type.setText("图片表情");
+
+            }else if(message.type == Message.TYPE_LOCATION){
+                contentImage.setVisibility(View.VISIBLE);
+                Glide.with(itemView.getContext())
+                        .load(R.drawable.location_mag)
+                        .into(contentImage);
+                content.setVisibility(View.VISIBLE);
+                content.setText(ParseUtils.parseLocation(message.content));
+                type.setText("位置");
+            }else if(message.type == Message.TYPE_PLANE_TEXT){
+                content.setVisibility(View.VISIBLE);
+                contentImage.setVisibility(View.GONE);
+                content.setText(message.content);
+                type.setText("文本");
+            }else if(message.type == Message.TYPE_SECURE){
+                content.setVisibility(View.VISIBLE);
+                contentImage.setVisibility(View.GONE);
+                content.setText(ParseUtils.parseMMReader(message.content));
+                type.setText("微信团队");
+            }else if(message.type == Message.TYPE_VOICE){
+                type.setText("语音");
+                content.setVisibility(View.VISIBLE);
+                contentImage.setVisibility(View.GONE);
+                content.setText(message.content);
+            }else{
+                type.setText("未知");
+                content.setVisibility(View.VISIBLE);
+                contentImage.setVisibility(View.GONE);
+                content.setText(message.content);
+            }
             time.setText(TimeUtil.getTime(message.createTime, "yyyy.MM.dd HH:mm"));
         }
     }

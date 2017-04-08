@@ -53,8 +53,8 @@
 
     <TextView
         android:layout_marginTop="40dp"
-        android:gravity="bottom"
         android:padding="12dp"
+        android:layout_marginBottom="@dimen/action_bar_height"
         android:id="@+id/hacking_progress"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"

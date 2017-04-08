@@ -49,6 +49,7 @@ public class HistoryFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (content == null) {
+            change = true;
             content = inflater.inflate(R.layout.fragment_history, container, false);
             bindView(content);
             initView();
@@ -80,6 +81,8 @@ public class HistoryFragment extends BaseFragment {
                 adapter = new HistoryAdapter();
                 adapter.init(messages);
                 historyList.setAdapter(adapter.build());
+            } else {
+                adapter.init(messages);
             }
         }
     }
