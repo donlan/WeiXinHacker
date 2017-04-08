@@ -1,18 +1,31 @@
 package dong.lan.sqlcipher;
 
-import android.content.ContentValues;
 import android.util.Log;
+
+
+import com.orhanobut.logger.Logger;
 
 import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteDatabaseHook;
-import net.sqlcipher.database.SQLiteOpenHelper;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 import dong.lan.sqlcipher.bean.Message;
 
@@ -58,7 +71,11 @@ public class Helper {
                     database.rawExecSQL("PRAGMA cipher_migrate;");
                 }
             };
-            wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
+            try {
+                wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         final List<Message> messages = new ArrayList<>();
         mThreadPool.submit(new Runnable() {
@@ -92,6 +109,36 @@ public class Helper {
         return false;
     }
 
+    public void hackingUin() {
+        EventBus.getDefault().post(new MsgEvent(0, "自动检索微信UIN..."));
+        String path = "/data/data/com.tencent.mm/shared_prefs/system_config_prefs.xml";
+        RootCMD.execRootCmd("cp " + path + " /sdcard/wx_uin.xml");
+
+        File file = new File("/sdcard/wx_uin.xml");
+        if (file.exists()) {
+            try {
+                char[] buf = new char[256];
+                FileReader r = new FileReader(file);
+                StringBuilder sb = new StringBuilder();
+                while (r.read(buf) != -1) {
+                    sb.append(buf);
+                }
+                String s = sb.toString();
+                if (s.contains("default_uin")) {
+                    int i = s.indexOf("default_uin") + 20;
+                    SPHelper.instance().putString("uin", s.substring(i, i + 9));
+                    EventBus.getDefault().post(new MsgEvent(0, "找到UIN:" + s.substring(i, i + 9)));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                EventBus.getDefault().post(new MsgEvent(0, "找不到默认的UIN..."));
+            }
+        } else {
+            EventBus.getDefault().post(new MsgEvent(0, "找不到默认的UIN..."));
+        }
+
+    }
+
     public void hackingWXDB(final String uin, final String password) {
         if (isHacking)
             return;
@@ -102,6 +149,7 @@ public class Helper {
             @Override
             public void run() {
 
+                EventBus.getDefault().post(new MsgEvent(0, "复制数据库文件..."));
                 RootCMD.execRootCmd("cp -R " + dbDir + " /sdcard/");
                 File file = new File("");
                 if (!file.exists())
@@ -127,18 +175,26 @@ public class Helper {
                     Cursor c = db.query("message", null, null, null, null, null, "talker,createTime desc");
                     long lastTime = SPHelper.instance().getLong(Config.DB_QUERY_LAST_TIME);
                     long time = 0;
+                    String[] s = c.getColumnNames();
+                    for (int i = 0; i < s.length; i++)
+                        Log.d(TAG, "run: " + s[i]);
+                    EventBus.getDefault().post(new MsgEvent(0, "开始解析信息..."));
+                    int count = 1;
                     while (c.moveToNext()) {
                         Message msg = new Message(c);
+                        Logger.d(msg);
                         if (msg.createTime > time)
                             time = msg.createTime;
                         if (time > lastTime) {
                             try {
                                 wxDB.insert("message", null, msg.toContentValues());
+                                EventBus.getDefault().post(new MsgEvent(0, "解析信息:" + (count++)) + " -> " + msg.msgId);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     }
+                    EventBus.getDefault().post(new MsgEvent(0, "解析完成"));
                     SPHelper.instance().putLong(Config.DB_QUERY_LAST_TIME, time);
                     c.close();
                     db.close();

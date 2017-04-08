@@ -17,6 +17,13 @@ import java.sql.Blob;
 
 public class Message {
 
+    public static final int TYPE_LOCATION = 48;
+    public static final int TYPE_BIG_EMOJI = 47;
+    public static final int TYPE_PLANE_TEXT = 1;
+    public static final int TYPE_VOICE = 34;
+    public static final int TYPE_SECURE = 318767153;
+
+
     public String msgId;
     public String msgSvrId;
     public int type;
@@ -39,6 +46,12 @@ public class Message {
     public int flag;
 
     public Message(Cursor cursor) {
+
+        /**
+         * 1456  01/6d
+         * 1600  82/d5
+         */
+
         msgId = cursor.getString(cursor.getColumnIndex("msgId"));
         msgSvrId = cursor.getString(cursor.getColumnIndex("msgSvrId"));
         type = cursor.getInt(cursor.getColumnIndex("type"));

@@ -13,7 +13,7 @@ import android.text.TextUtils;
 
 public class SPHelper {
     private SharedPreferences preferences;
-
+    private Context context;
     private static final String DEFAULT_SP_NAME = "smartTrip";
 
     private static SPHelper spHelper = null;
@@ -25,10 +25,14 @@ public class SPHelper {
     }
 
     public void init(Context context, String spName) {
+        this.context  = context;
         preferences = context.getSharedPreferences(
                 TextUtils.isEmpty(spName) ? DEFAULT_SP_NAME : spName, Context.MODE_PRIVATE);
     }
 
+    public SharedPreferences getPreferences(String name){
+        return context.getSharedPreferences(name,Context.MODE_PRIVATE);
+    }
     private SPHelper() {
     }
 
