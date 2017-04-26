@@ -71,13 +71,14 @@
         fastQuery: true,
         resolution: function (value, record, column, grid, dataNo, columnNo) {
             var content ='';
-            if(value['type'] == 47){
-                var msg = value['content'];
+            var msg = record['content'];
+            if(record['type'] == 47){
                 var i = msg.indexOf('cdnurl')+8;
                 var j = msg.indexOf("designerid")-1;
-                content='<img src="'msg.substring(i,j)'">'
+                content='<img src="http://'+msg.substring(i,j)+'"/>'
+                console.log(msg.substring(i,j));
             }else{
-                content='<p>'.value['content'].'</p>';
+                content=record["content"];
             }
             return content;
         }
@@ -142,7 +143,19 @@
                     var isSend = messageList[i]['isSend'];
 
                     msg.msgId = messageList[i]['msgId'];
-                    msg.type = messageList[i]['type'];
+                    var t = messageList[i]['type'];
+                    if(t == 1)
+                        msg.type = "文本";
+                    else if(t == 34)
+                        msg.type = "语音";
+                    else if(t == 47)
+                        msg.type = "图片/表情";
+                    else if(t == 48)
+                        msg.type = "位置";
+                    else if(t == 318767153)
+                        msg.type = "微信团队";
+                    else
+                        msg.type = "未知";
                     if (isSend == 1) {
                         msg.talker = messageList[i]['talker'];
                         msg.sender = '自己';

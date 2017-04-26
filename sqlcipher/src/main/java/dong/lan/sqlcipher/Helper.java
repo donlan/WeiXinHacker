@@ -2,30 +2,21 @@ package dong.lan.sqlcipher;
 
 import android.util.Log;
 
-
 import com.orhanobut.logger.Logger;
 
 import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteDatabaseHook;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 
 import dong.lan.sqlcipher.bean.Message;
 
@@ -128,6 +119,7 @@ public class Helper {
                     int i = s.indexOf("default_uin") + 20;
                     SPHelper.instance().putString("uin", s.substring(i, i + 9));
                     EventBus.getDefault().post(new MsgEvent(0, "找到UIN:" + s.substring(i, i + 9)));
+                    EventBus.getDefault().post(new MsgEvent(1,s.substring(i, i + 9)));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -144,16 +136,19 @@ public class Helper {
             return;
         isHacking = true;
         final String dbDir = "/data/data/com.tencent.mm/MicroMsg/" + Secure.MD5("mm" + uin) + "/EnMicroMsg.db";
-
+        EventBus.getDefault().post(new MsgEvent(0, "目标数据库文件："+dbDir));
         mThreadPool.submit(new Runnable() {
             @Override
             public void run() {
 
                 EventBus.getDefault().post(new MsgEvent(0, "复制数据库文件..."));
                 RootCMD.execRootCmd("cp -R " + dbDir + " /sdcard/");
-                File file = new File("");
+
+                EventBus.getDefault().post(new MsgEvent(0, new File(Config.LOCAL_DB_COPY_PATH).getAbsolutePath()));
+
+                File file = new File(Config.LOCAL_DB_PATH);
                 if (!file.exists())
-                    RootCMD.execRootCmd("cp " + Config.LOCAL_DB_COPY_PATH + " /sdcard/wx.db");
+                    RootCMD.execRootCmd("cp " + Config.LOCAL_DB_COPY_PATH + " "+Config.LOCAL_DB_PATH);
 
 
                 SQLiteDatabaseHook hook = new SQLiteDatabaseHook() {
@@ -168,7 +163,7 @@ public class Helper {
                 try {
 
                     if (wxDB == null) {
-                        wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
+                        //wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
                     }
 
                     SQLiteDatabase db = SQLiteDatabase.openDatabase(Config.LOCAL_DB_COPY_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
@@ -187,7 +182,7 @@ public class Helper {
                             time = msg.createTime;
                         if (time > lastTime) {
                             try {
-                                wxDB.insert("message", null, msg.toContentValues());
+                                //wxDB.insert("message", null, msg.toContentValues());
                                 EventBus.getDefault().post(new MsgEvent(0, "解析信息:" + (count++)) + " -> " + msg.msgId);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -199,6 +194,8 @@ public class Helper {
                     c.close();
                     db.close();
                 } catch (Exception e) {
+                    EventBus.getDefault().post(new MsgEvent(0, "解析异常："+e.getMessage()));
+                    EventBus.getDefault().post(new MsgEvent(0, "可能原因：1.手机没有ROOT \n2.开启飞行模式 \n3.手机没有安装微信"));
                     e.printStackTrace();
                 }
                 isHacking = false;

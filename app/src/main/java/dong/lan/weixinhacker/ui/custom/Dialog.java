@@ -1,7 +1,6 @@
 package dong.lan.weixinhacker.ui.custom;
 
 import android.content.Context;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +46,6 @@ public class Dialog implements View.OnClickListener {
     }
 
 
-
     public Dialog setClickListener(DialogClickListener listener) {
         this.listener = listener;
         return this;
@@ -89,7 +87,7 @@ public class Dialog implements View.OnClickListener {
         }
     }
 
-    public View findView(int id){
+    public View findView(int id) {
         return container.findViewById(id);
     }
 
@@ -126,8 +124,9 @@ public class Dialog implements View.OnClickListener {
     public void destroy() {
         container.removeAllViews();
         container = null;
-        alertDialog.dismiss();
-        alertDialog =null;
+        if (alertDialog != null)
+            alertDialog.dismiss();
+        alertDialog = null;
         builder = null;
         left = null;
         right = null;
