@@ -117,9 +117,17 @@ public class Helper {
                 String s = sb.toString();
                 if (s.contains("default_uin")) {
                     int i = s.indexOf("default_uin") + 20;
-                    SPHelper.instance().putString("uin", s.substring(i, i + 9));
-                    EventBus.getDefault().post(new MsgEvent(0, "找到UIN:" + s.substring(i, i + 9)));
-                    EventBus.getDefault().post(new MsgEvent(1,s.substring(i, i + 9)));
+
+                    sb.delete(0, sb.length());
+                    while (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+                        sb.append(s.charAt(i));
+                        i++;
+                    }
+                    String uin = sb.toString();
+
+                    SPHelper.instance().putString("uin", uin);
+                    EventBus.getDefault().post(new MsgEvent(0, "找到UIN:" + uin));
+                    EventBus.getDefault().post(new MsgEvent(1, uin));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -136,21 +144,17 @@ public class Helper {
             return;
         isHacking = true;
         final String dbDir = "/data/data/com.tencent.mm/MicroMsg/" + Secure.MD5("mm" + uin) + "/EnMicroMsg.db";
-        EventBus.getDefault().post(new MsgEvent(0, "目标数据库文件："+dbDir));
+        EventBus.getDefault().post(new MsgEvent(0, "目标数据库文件：" + dbDir));
         mThreadPool.submit(new Runnable() {
             @Override
             public void run() {
 
                 EventBus.getDefault().post(new MsgEvent(0, "复制数据库文件..."));
                 RootCMD.execRootCmd("cp -R " + dbDir + " /sdcard/");
-
                 EventBus.getDefault().post(new MsgEvent(0, new File(Config.LOCAL_DB_COPY_PATH).getAbsolutePath()));
-
                 File file = new File(Config.LOCAL_DB_PATH);
                 if (!file.exists())
-                    RootCMD.execRootCmd("cp " + Config.LOCAL_DB_COPY_PATH + " "+Config.LOCAL_DB_PATH);
-
-
+                    RootCMD.execRootCmd("cp " + Config.LOCAL_DB_COPY_PATH + " " + Config.LOCAL_DB_PATH);
                 SQLiteDatabaseHook hook = new SQLiteDatabaseHook() {
                     public void preKey(SQLiteDatabase database) {
                     }
@@ -163,7 +167,7 @@ public class Helper {
                 try {
 
                     if (wxDB == null) {
-                        //wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
+                        wxDB = SQLiteDatabase.openDatabase(Config.LOCAL_DB_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
                     }
 
                     SQLiteDatabase db = SQLiteDatabase.openDatabase(Config.LOCAL_DB_COPY_PATH, password, null, SQLiteDatabase.OPEN_READWRITE, hook);
@@ -171,30 +175,36 @@ public class Helper {
                     long lastTime = SPHelper.instance().getLong(Config.DB_QUERY_LAST_TIME);
                     long time = 0;
                     String[] s = c.getColumnNames();
+
                     for (int i = 0; i < s.length; i++)
                         Log.d(TAG, "run: " + s[i]);
                     EventBus.getDefault().post(new MsgEvent(0, "开始解析信息..."));
                     int count = 1;
+                    EventBus.getDefault().post(new MsgEvent(0, "最新消息时间："+TimeUtil.longToString(lastTime,"yyyy.MM.dd hh:mm:ss")));
                     while (c.moveToNext()) {
                         Message msg = new Message(c);
                         Logger.d(msg);
+
                         if (msg.createTime > time)
                             time = msg.createTime;
+                        EventBus.getDefault().post(new MsgEvent(0, "消息时间："+TimeUtil.longToString(lastTime,"yyyy.MM.dd hh:mm:ss")));
                         if (time > lastTime) {
                             try {
-                                //wxDB.insert("message", null, msg.toContentValues());
+                                wxDB.insert("message", null, msg.toContentValues());
                                 EventBus.getDefault().post(new MsgEvent(0, "解析信息:" + (count++)) + " -> " + msg.msgId);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     }
+                    if (time > lastTime)
+                        SPHelper.instance().putLong(Config.DB_QUERY_LAST_TIME, time);
                     EventBus.getDefault().post(new MsgEvent(0, "解析完成"));
                     SPHelper.instance().putLong(Config.DB_QUERY_LAST_TIME, time);
                     c.close();
                     db.close();
                 } catch (Exception e) {
-                    EventBus.getDefault().post(new MsgEvent(0, "解析异常："+e.getMessage()));
+                    EventBus.getDefault().post(new MsgEvent(0, "解析异常：" + e.getMessage()));
                     EventBus.getDefault().post(new MsgEvent(0, "可能原因：1.手机没有ROOT \n2.开启飞行模式 \n3.手机没有安装微信"));
                     e.printStackTrace();
                 }

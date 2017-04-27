@@ -50,14 +50,18 @@
         app:radius="8dp"
         tools:ignore="HardcodedText" />
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <TextView
-        android:layout_marginTop="40dp"
         android:padding="12dp"
         android:layout_marginBottom="@dimen/action_bar_height"
         android:id="@+id/hacking_progress"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+</ScrollView>
+
 
 </LinearLayout>

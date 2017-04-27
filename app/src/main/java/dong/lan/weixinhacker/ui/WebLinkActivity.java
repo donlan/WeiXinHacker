@@ -9,19 +9,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
-
 
 import butterknife.BindView;
-import dong.lan.microserver.AppServer.ApMgr;
 import dong.lan.microserver.AppServer.AndroidMicroServer;
+import dong.lan.microserver.AppServer.ApMgr;
+import dong.lan.microserver.AppServer.WifiAPBroadcastReceiver;
+import dong.lan.microserver.AppServer.WifiMgr;
 import dong.lan.microserver.Constant;
 import dong.lan.microserver.handler.ResourceUriHandler;
 import dong.lan.microserver.handler.WXDataDeleteHandler;
 import dong.lan.microserver.handler.WXDataQueryHandler;
 import dong.lan.microserver.utils.NetUtils;
-import dong.lan.microserver.AppServer.WifiAPBroadcastReceiver;
-import dong.lan.microserver.AppServer.WifiMgr;
 import dong.lan.weixinhacker.R;
 import dong.lan.weixinhacker.ui.base.BaseBarActivity;
 import dong.lan.weixinhacker.ui.custom.LabelTextView;
@@ -97,6 +95,8 @@ public class WebLinkActivity extends BaseBarActivity {
             } else {
                 ApMgr.configApState(getApplicationContext(), ssid); // change Ap state :boolean
             }
+        }else{
+            ApMgr.configApState(getApplicationContext(), ssid); // change Ap state :boolean
         }
     }
 

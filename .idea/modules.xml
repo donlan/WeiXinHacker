@@ -3,14 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RTPermission/RTPermission.iml" filepath="$PROJECT_DIR$/RTPermission/RTPermission.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RTPermission/RTPermission.iml" filepath="$PROJECT_DIR$/RTPermission/RTPermission.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WeiXinHacker.iml" filepath="$PROJECT_DIR$/WeiXinHacker.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeiXinHacker.iml" filepath="$PROJECT_DIR$/WeiXinHacker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/microserver/microserver.iml" filepath="$PROJECT_DIR$/microserver/microserver.iml" />
-      <module fileurl="file://$PROJECT_DIR$/microserver/microserver.iml" filepath="$PROJECT_DIR$/microserver/microserver.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sqlcipher/sqlcipher.iml" filepath="$PROJECT_DIR$/sqlcipher/sqlcipher.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqlcipher/sqlcipher.iml" filepath="$PROJECT_DIR$/sqlcipher/sqlcipher.iml" />
     </modules>
   </component>

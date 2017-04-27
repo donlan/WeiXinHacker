@@ -1,7 +1,5 @@
 package dong.lan.weixinhacker.adapter.base;
 
-import android.view.ViewGroup;
-
 import java.util.List;
 
 /**
@@ -30,6 +28,8 @@ public abstract class AbstractBinder<T> implements AdapterBinder<T> {
 
     @Override
     public void init(List<T> data) {
+        if (this.data != null)
+            this.data.clear();
         this.data = data;
     }
 
