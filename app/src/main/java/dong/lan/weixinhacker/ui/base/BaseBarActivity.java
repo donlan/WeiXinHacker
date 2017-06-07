@@ -10,21 +10,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dong.lan.weixinhacker.R;
-import dong.lan.weixinhacker.presentation.ProgressView;
 import dong.lan.weixinhacker.ui.custom.Dialog;
 
 /**
- * Created by 梁桂栋 on 17-1-16 ： 下午3:36.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
  */
 
-public class BaseBarActivity extends AppCompatActivity implements ProgressView {
+public class BaseBarActivity extends AppCompatActivity {
 
     private Unbinder unbinder;
     private ProgressDialog progressDialog;
@@ -87,12 +81,10 @@ public class BaseBarActivity extends AppCompatActivity implements ProgressView {
     }
 
 
-    @Override
     public void show(String text) {
         Snackbar.make(getWindow().getDecorView(), text, Snackbar.LENGTH_SHORT).show();
     }
 
-    @Override
     public void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }

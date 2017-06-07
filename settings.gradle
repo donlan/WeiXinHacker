@@ -1,1 +1,1 @@
-include ':app', ':RTPermission', ':microserver', ':sqlcipher'
+include ':app', ':RTPermission',  ':sqlcipher', ':base'

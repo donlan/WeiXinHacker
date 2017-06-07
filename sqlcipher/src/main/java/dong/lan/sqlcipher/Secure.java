@@ -7,10 +7,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by 梁桂栋 on 17-2-22 ： 下午12:29.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
  */
 
 public class Secure {

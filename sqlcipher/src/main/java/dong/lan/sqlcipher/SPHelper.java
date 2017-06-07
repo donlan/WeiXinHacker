@@ -5,10 +5,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 /**
- * Created by 梁桂栋 on 17-1-10 ： 下午10:35.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
  */
 
 public class SPHelper {

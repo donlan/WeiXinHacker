@@ -10,7 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/RTPermission" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/microserver" />
+            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/sqlcipher" />
           </set>
         </option>

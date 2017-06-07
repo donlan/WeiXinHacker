@@ -1,15 +1,13 @@
 package dong.lan.microserver.handler;
 
 import android.text.TextUtils;
-import android.widget.ListView;
-
-import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
+import dong.lan.base.controller.JSON;
 import dong.lan.microserver.AppServer.AndroidMicroServer;
 import dong.lan.microserver.AppServer.Request;
 import dong.lan.microserver.AppServer.ResUriHandler;
@@ -38,7 +36,7 @@ public class WXDataQueryHandler implements ResUriHandler {
         if (request.getUri().equals("/query/")) {
             List<Message> messages = Helper.instance().getLocalMessages(AndroidMicroServer.pair);
             int size = messages == null ? 0 : messages.size();
-            String jsonStr = "{\"data\":" + JSON.toJSONString(messages) + ",\"size\":" + size + "}";
+            String jsonStr = "{\"data\":" + JSON.get().gson().toJson(messages) + ",\"size\":" + size + "}";
             OutputStream outputStream = null;
             PrintStream printStream = null;
             try {

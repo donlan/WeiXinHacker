@@ -1,9 +1,14 @@
 package dong.lan.sqlcipher.event;
 
 /**
- * Created by 思远 on 2017/6/1.
- * describe ：
  */
 
 public class UinEvent {
+    public int code;
+    public String uin;
+
+    public UinEvent(int code, String uin) {
+        this.code = code;
+        this.uin = uin;
+    }
 }

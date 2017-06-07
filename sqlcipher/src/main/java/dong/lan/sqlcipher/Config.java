@@ -1,10 +1,6 @@
 package dong.lan.sqlcipher;
 
 /**
- * Created by 梁桂栋 on 17-3-12 ： 上午11:33.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: WeiXinHacker
  */
 
 public class Config {

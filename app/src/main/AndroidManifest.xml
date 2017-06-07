@@ -19,18 +19,17 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.HomeActivity"
-            android:windowSoftInputMode="stateHidden"
-            >
+        <activity
+            android:name=".ui.SplashActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.WebLinkActivity"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

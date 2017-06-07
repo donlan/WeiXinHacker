@@ -10,10 +10,7 @@ import android.widget.TextView;
 import dong.lan.weixinhacker.R;
 
 /**
- * Created by 梁桂栋 on 17-2-11 ： 下午2:58.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: SmartTrip
+ * 对话框
  */
 
 public class Dialog implements View.OnClickListener {

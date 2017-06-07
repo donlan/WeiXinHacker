@@ -7,11 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dong.lan.weixinhacker.R;
-import dong.lan.weixinhacker.presentation.ProgressView;
 import dong.lan.weixinhacker.ui.custom.Dialog;
 
 /**
@@ -21,7 +19,7 @@ import dong.lan.weixinhacker.ui.custom.Dialog;
  * description: SmartTrip
  */
 
-public class BaseActivity extends AppCompatActivity implements ProgressView {
+public class BaseActivity extends AppCompatActivity {
 
     private Unbinder unbinder;
     private ProgressDialog progressDialog;
@@ -32,6 +30,7 @@ public class BaseActivity extends AppCompatActivity implements ProgressView {
             dialog = new Dialog(this);
         }
         dialog.setMessageText(text);
+        dialog.show();
     }
 
     public void alert(String text) {
@@ -64,12 +63,10 @@ public class BaseActivity extends AppCompatActivity implements ProgressView {
         unbinder = ButterKnife.bind(this);
     }
 
-    @Override
     public void show(String text) {
         Snackbar.make(getWindow().getDecorView(), text, Snackbar.LENGTH_SHORT).show();
     }
 
-    @Override
     public void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }

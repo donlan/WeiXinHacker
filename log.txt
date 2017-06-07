@@ -1,0 +1,163 @@
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='16', type=1, createTime=1496508367000, talker='gh_d29e0d22a6f9', content='你好！谢谢你向我们反映新闻线索：
+ ║ 1.可拨打澎湃新闻报料热线：4009-20-4009，可能线路繁忙，请耐心等候，最好工作时间拨打。
+ ║ 2.也可将线索或材料发至邮箱news@thepaper.cn，会有工作人员专门处理。
+ ║ 新闻线索一旦被采纳，记者会第一时间和你联系。
+ ║ 谢谢！期待你的来电来函。', imgPath='null', talkerId='27'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='15', type=1, createTime=1496508130000, talker='gh_d29e0d22a6f9', content='欢迎关注澎湃新闻！
+ ║ 我们专注时政与思想，生产并聚合中文互联网最优质的时政思想类文章，立志成为中国第一时政品牌。
+ ║ 如果你喜欢时政，那么安装一个澎湃新闻APP就够了。
+ ║ 如果你还没安装澎湃，点击底部右下角菜单直接下载，很方便。
+ ║ 来吧，一起澎湃！', imgPath='null', talkerId='27'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='14', type=1, createTime=1496508113000, talker='gh_7f8beca5a5c9', content='终于等到你~欢迎关注新浪新闻公众号，我们将从多渠道、多角度聚焦国内外热点事件，带给您有力量的新闻！
+ ║ 
+ ║ 点击左下角“新资讯”，“手机新浪网”为您提供实时资讯；
+ ║ 点击中间“新互动”，参与微博热门话题实时讨论；
+ ║ 点击右下角“最热门”，了解热点事件最新进展。', imgPath='null', talkerId='26'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='13', type=436207665, createTime=1496508069000, talker='troublemakerlost', content='<msg><appmsg appid="" sdkver=""><des><![CDATA[我给你发了一个红包，赶紧去拆!]]></des><url><![CDATA[https://wxapp.tenpay.com/mmpayhb/wxhb_personalreceive?showwxpaytitle=1&msgtype=1&channelid=1&sendid=1000039501201706047001063948109&ver=6&sign=71609d5ec084f234a03b18bea8486171e9e8b62bf6b9e0c4b714084f215dfc539dffa1c584ddd873741f5051af61e8e982360094ad82c9eef84c0304296fcc16a165bb68422f71a32b30f15bc51b8d0d8bbcc3bd15c3db398057ed2f1d314ae4]]></url><type><![CDATA[2001]]></type><title><![CDATA[微信红包]]></title><thumburl><![CDATA[http://wx.gtimg.com/hongbao/1701/hb.png]]></thumburl><wcpayinfo><templateid><![CDATA[7a2a165d31da7fce6dd77e05c300028a]]></templateid><url><![CDATA[https://wxapp.tenpay.com/mmpayhb/wxhb_personalreceive?showwxpaytitle=1&msgtype=1&channelid=1&sendid=1000039501201706047001063948109&ver=6&sign=71609d5ec084f234a03b18bea8486171e9e8b62bf6b9e0c4b714084f215dfc539dffa1c584ddd873741f5051af61e8e982360094ad82c9eef84c0304296fcc16a165bb68422f71a32b30f15bc51b8d0d8bbcc3bd15c3db398057ed2f1d314ae4]]></url><iconurl><![CDATA[http://wx.gtimg.com/hongbao/1701/hb.png]]></iconurl><receivertitle><![CDATA[恭喜发财，大吉大利]]></receivertitle><sendertitle><![CDATA[恭喜发财，大吉大利]]></sendertitle><scenetext><![CDATA[微信红包]]></scenetext><senderdes><![CDATA[查看红包]]></senderdes><receiverdes><![CDATA[领取红包]]></receiverdes><nativeurl><![CDATA[wxpay://c2cbizmessagehandler/hongbao/receivehongbao?msgtype=1&channelid=1&sendid=1000039501201706047001063948109&sendusername=troublemakerlost&ver=6&sign=71609d5ec084f234a03b18bea8486171e9e8b62bf6b9e0c4b714084f215dfc539dffa1c584ddd873741f5051af61e8e982360094ad82c9eef84c0304296fcc16a165bb68422f71a32b30f15bc51b8d0d8bbcc3bd15c3db398057ed2f1d314ae4]]></nativeurl><sceneid><![CDATA[1002]]></sceneid><innertype><![CDATA[0]]></innertype><scenetext>微信红包</scenetext><locallogoicon><![CDATA[c2c_hongbao_icon_cn]]></locallogoicon></wcpayinfo></appmsg><fromusername><![CDATA[troublemakerlost]]></fromusername></msg>', imgPath='THUMBNAIL_DIRPATH://th_2842157b72af8083b8aac3ccf8da6054', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='12', type=49, createTime=1496508039000, talker='troublemakerlost', content='<msg><appmsg appid="" sdkver="0"><title>除了系统默认样式，日期选择器设计还有更多的选择</title><des>日期选择器设计还可以这样玩？</des><username></username><action>view</action><type>5</type><showtype>0</showtype><content></content><url>http://mp.weixin.qq.com/s?__biz=MzAwNjM0MzIzNA==&amp;mid=2650319652&amp;idx=1&amp;sn=63bba266f6cf5bb618745616a1dc2347&amp;chksm=8302d409b4755d1f7b41240e4e63aa29b2189f1592a446939c965f6c952f92c790f0d1e9828a&amp;scene=0#rd</url><lowurl></lowurl><dataurl></dataurl><lowdataurl></lowdataurl><contentattr>0</contentattr><streamvideo><streamvideourl></streamvideourl><streamvideototaltime>0</streamvideototaltime><streamvideotitle></streamvideotitle><streamvideowording></streamvideowording><streamvideoweburl></streamvideoweburl><streamvideothumburl></streamvideothumburl><streamvideoaduxinfo></streamvideoaduxinfo><streamvideopublishid></streamvideopublishid></streamvideo><canvasPageItem><canvasPageXml><![CDATA[]]></canvasPageXml></canvasPageItem><appattach><attachid></attachid><cdnthumburl>30590201000452305002010002042c6d193402033d0af60204bc84277d02045932e686042e6175706170706d73675f393637626662366431383836343330345f313439363530383033373630385f37383533370201000201000400</cdnthumburl><cdnthumbmd5>1d318c84eb785367773eae35eebc0236</cdnthumbmd5><cdnthumblength>21946</cdnthumblength><cdnthumbheight>120</cdnthumbheight><cdnthumbwidth>120</cdnthumbwidth><cdnthumbaeskey>ee67ceca757748f39228f0f9742e41be</cdnthumbaeskey><aeskey>ee67ceca757748f39228f0f9742e41be</aeskey><encryver>1</encryver><fileext></fileext><islargefilemsg>0</islargefilemsg></appattach><extinfo></extinfo><androidsource>3</androidsource><thumburl>http://mmbiz.qpic.cn/mmbiz_png/y9x22hQbEXUEshN7icTbpuxshfjXqVnl2BFt53Q93LRZibMVfKpiaj53lBTgOfYB3YhWMAwr0icFBq8DhFdnicxWTOg/640?wx_fmt=png&amp;wxtype=png&amp;wxfrom=0</thumburl><mediatagname></mediatagname><messageaction><![CDATA[]]></messageaction><messageext><![CDATA[]]></messageext><emoticongift><packageflag>0</packageflag><packageid></packageid></emoticongift><emoticonshared><packageflag>0</packageflag><packageid></packageid></emoticonshared><weappinfo><username></username><appid></appid></weappinfo><designershared><designeruin>0</designeruin><designername>null</designername><designerrediretcturl>null</designerrediretcturl></designershared><emotionpageshared><tid>0</tid><title>null</title><desc>null</desc><iconUrl>null</iconUrl><secondUrl>null</secondUrl><pageType>0</pageType></emotionpageshared><webviewshared><shareUrlOriginal></shareUrlOriginal><shareUrlOpen></shareUrlOpen><jsAppId></jsAppId><publisherId></publisherId></webviewshared><template_id>0</template_id><statextstr></statextstr><md5>1d318c84eb785367773eae35eebc0236</md5></appmsg><fromusername>troublemakerlost</fromusername><scene>0</scene><appinfo><version>1</version><appname></appname></appinfo><commenturl></commenturl></msg>', imgPath='THUMBNAIL_DIRPATH://th_32a030f7f1ebffa9a8ec71f3dfd47ccd', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='11', type=1, createTime=1496508038000, talker='troublemakerlost', content='太久了', imgPath='null', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='10', type=3, createTime=1496508026000, talker='troublemakerlost', content='<?xml version="1.0"?>
+ ║ <msg>
+ ║ 	<img aeskey="5a53b3acf7e947469814e83ca7a3c276" encryver="0" cdnthumbaeskey="5a53b3acf7e947469814e83ca7a3c276" cdnthumburl="3050020100044930470201000204f4c592d002033d0af602041384277d02045932e67a0425617570696d675f393637626662366431383836343330345f313439363530383032353433370201000201000400" cdnthumblength="6144" cdnthumbheight="68" cdnthumbwidth="120" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="3050020100044930470201000204f4c592d002033d0af602041384277d02045932e67a0425617570696d675f393637626662366431383836343330345f313439363530383032353433370201000201000400" length="32351" md5="1e880a07ba80b7140de8c2cdab36d664" />
+ ��� </msg>
+ ║ ', imgPath='THUMBNAIL_DIRPATH://th_d47834423d771e40bbd4a1e3af180ed8', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='9', type=34, createTime=1496508005000, talker='troublemakerlost', content='troublemakerlost:3333:0
+ ║ ', imgPath='060040060417d70546c6fc3104', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='8', type=34, createTime=1496507996248, talker='troublemakerlost', content='wxid_3kzxv0fomws422:4065:0
+ ║ ', imgPath='510039060417bb77836357b101', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='7', type=47, createTime=1496507971000, talker='troublemakerlost', content='troublemakerlost:0:0:047fac91661edfd6a7b8acc6200c60e7:<msg><emoji fromusername="troublemakerlost" tousername="wxid_3kzxv0fomws422" type="2" idbuffer="media*#*0_0" md5="047fac91661edfd6a7b8acc6200c60e7" len="97743" productid="com.tencent.xin.emoticon.person.stiker_14588115899108479b15875198" androidmd5="047fac91661edfd6a7b8acc6200c60e7" androidlen="97743" s60v3md5="047fac91661edfd6a7b8acc6200c60e7" s60v3len="97743" s60v5md5="047fac91661edfd6a7b8acc6200c60e7" s60v5len="97743" cdnurl="http*#*//mmbiz.qpic.cn/mmemoticon/ajNVdqHZLLCmxPqI7fND1paC3dZ8dGM3At3O6oVLkJvyemibWvx1Af3icBRx3HBQr5/0" designerid="" thumburl="http*#*//mmbiz.qpic.cn/mmemoticon/Q3auHgzwzM5llZ8F17rYSwIV8rkEUiaHy4TpMS7BH9VSZOtpRLOZgXYqnBBDJK3fO/0" encrypturl="http*#*//emoji.qpic.cn/wx_emoji/O9fic2TGwdHgyicKfIIkvnf57TPpUCRp8j9glkTdJhQ4qQxXQBjo4ib5Q/" aeskey="91d36907ff20d17a7f65342d685941bc" externurl="http*#*//emoji.qpic.cn/wx_emoji/UbFqaugaaf9Egmfja3MIaMRMHFZGUBySzE1IdqdBvcdPdIwUQyV1dbBNPGH1ZgXb/" externmd5="121b52e24bd121862a455036d1726414" width="240" height="240"></emoji></msg>:0
+ ║ ', imgPath='047fac91661edfd6a7b8acc6200c60e7', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔══════════════════════════════════════════════════════════════════════════════��═════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='6', type=47, createTime=1496507960000, talker='troublemakerlost', content='troublemakerlost:0:0:891a21f9cad5a0b9a87f94dda2230ea0:<msg><emoji fromusername="troublemakerlost" tousername="wxid_3kzxv0fomws422" type="2" idbuffer="media*#*0_0" md5="891a21f9cad5a0b9a87f94dda2230ea0" len="70760" productid="com.tencent.xin.emoticon.person.stiker_1460950580051e334f853c01e7" androidmd5="891a21f9cad5a0b9a87f94dda2230ea0" androidlen="70760" s60v3md5="891a21f9cad5a0b9a87f94dda2230ea0" s60v3len="70760" s60v5md5="891a21f9cad5a0b9a87f94dda2230ea0" s60v5len="70760" cdnurl="http*#*//mmbiz.qpic.cn/mmemoticon/ajNVdqHZLLDOlsGtttOfyOTsicLln98HEib4ad6bf5Oe9gQE7rtnIf6CzvqLcDnBNib/0" designerid="" thumburl="http*#*//mmbiz.qpic.cn/mmemoticon/ajNVdqHZLLDOlsGtttOfyCktLZEruSIAnfCbibL4aoUkLflEtIzaLIESQiaRQpcpRs/0" encrypturl="http*#*//emoji.qpic.cn/wx_emoji/utTTyOpibARavUeAM0lnBtSzjRq3iczyaESwzQRnDZSZgSYcpicyBopBQ/" aeskey="9c22e4cdd26793f1a6510835aa466925" externurl="http*#*//emoji.qpic.cn/wx_emoji/KyMjruhmza3jGPFsicBnpYqecsmlMeLdHSQ9wlYGoo5WZKkUlIjh6jVCQoSHuRqD4/" externmd5="74d949b3557a19e01699aab14e0626f4" width="240" height="240"></emoji></msg>:0
+ ║ ', imgPath='891a21f9cad5a0b9a87f94dda2230ea0', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='5', type=48, createTime=1496507945000, talker='troublemakerlost', content='<?xml version="1.0"?>
+ ║ <msg>
+ ║ 	<location x="38.013916" y="112.442863" scale="16" label="尖草坪区中北大学" maptype="0" poiname="[位置]" />
+ ║ </msg>
+ ║ ', imgPath='null', talkerId='25'}
+ ╚══════════════════════════════════════���═════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='4', type=3, createTime=1496507925000, talker='troublemakerlost', content='<?xml version="1.0"?>
+ ║ <msg>
+ ║ 	<img aeskey="7910afa3ad8b49e28a4d987db6ec7ae6" encryver="0" cdnthumbaeskey="7910afa3ad8b49e28a4d987db6ec7ae6" cdnthumburl="3050020100044930470201000204f4c592d002033d0af602041384277d02045932e6150425617570696d675f393637626662366431383836343330345f313439363530373932343130350201000201000400" cdnthumblength="3702" cdnthumbheight="120" cdnthumbwidth="71" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="3050020100044930470201000204f4c592d002033d0af602041384277d02045932e6150425617570696d675f393637626662366431383836343330345f313439363530373932343130350201000201000400" length="10462" cdnbigimgurl="3050020100044930470201000204f4c592d002033d0af602041384277d02045932e6150425617570696d675f393637626662366431383836343330345f313439363530373932343130350201000201000400" hdlength="65416" md5="3ad1fe52f276119d72e27079210b1052" />
+ ║ </msg>
+ ║ ', imgPath='THUMBNAIL_DIRPATH://th_a5da40e699b552ac16e34b5328147472', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='3', type=1, createTime=1496507910727, talker='troublemakerlost', content='[色][得意][发怒][尴尬][大哭][大哭][闭嘴][闭嘴][色]', imgPath='null', talkerId='25'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════
+ ╔════════════════════════════════════════════════════════════════════════════════════════
+ ║ Thread: pool-5-thread-2
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ FutureTask.run  (FutureTask.java:237)
+ ║    Executors$RunnableAdapter.call  (Executors.java:422)
+ ║       Helper$3.run  (Helper.java:186)
+ ╟────────────────────────────────────────────────────────────────────────────────────────
+ ║ Message{msgId='2', type=1, createTime=1496503816000, talker='weixin', content='欢迎你再次回到微信。如果你在使用过程中有任何的问题或建议，记得给我发信反馈哦。', imgPath='null', talkerId='23'}
+ ╚════════════════════════════════════════════════════════════════════════════════════════

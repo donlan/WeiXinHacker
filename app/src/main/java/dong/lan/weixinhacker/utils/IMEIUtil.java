@@ -4,10 +4,7 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 
 /**
- * Created by 梁桂栋 on 17-3-11 ： 上午10:14.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: WeiXinHacker
+ * 获取IMEI
  */
 
 public class IMEIUtil {

@@ -7,10 +7,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 /**
- * Created by 梁桂栋 on 17-3-10 ： 下午11:45.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: WeiXinHacker
  */
 
 public class RootCMD {

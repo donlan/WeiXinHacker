@@ -1,10 +1,6 @@
-package dong.lan.sqlcipher;
+package dong.lan.sqlcipher.event;
 
 /**
- * Created by 梁桂栋 on 17-4-5 ： 下午3:37.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: WeiXinHacker
  */
 
 public class MsgEvent {

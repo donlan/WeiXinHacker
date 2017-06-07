@@ -6,13 +6,10 @@ import com.orhanobut.logger.Logger;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
+import dong.lan.base.Config;
 import dong.lan.sqlcipher.SPHelper;
 
 /**
- * Created by 梁桂栋 on 17-3-11 ： 上午11:54.
- * Email:       760625325@qq.com
- * GitHub:      github.com/donlan
- * description: WeiXinHacker
  */
 
 public class App extends Application {
@@ -23,5 +20,6 @@ public class App extends Application {
         SQLiteDatabase.loadLibs(this);
         SPHelper.instance().init(this,"wxhacking");
         Logger.init("WX").methodCount(3);
+        Config.init(this);
     }
 }
