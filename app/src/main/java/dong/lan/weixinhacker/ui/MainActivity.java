@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -115,7 +117,7 @@ public class MainActivity extends BaseActivity {
         // ==1说明是破解得到UIN码
         if (event.cmd == 1) {
             //当前手机中的UIN码与当前用户不匹配，就退出系统
-            if (!event.data.toString().equals(user.getUsername())) {
+            if (!event.data.toString().equals(user.getUsername()) || event.data.toString().length()<8) {
                 new Dialog(this)
                         .setMessageText("系统uin: " + event.data.toString() + " 用户id:" + user.getUsername() + " 不匹配！！！")
                         .setClickListener(new Dialog.DialogClickListener() {
@@ -173,6 +175,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        Logger.d(event.peerMap.size());
 
         //如果破解过程中有用户信息
         if (!event.peerMap.isEmpty()) {
@@ -183,15 +186,19 @@ public class MainActivity extends BaseActivity {
             peerBmobQuery.findObjects(new FindListener<Peer>() {
                 @Override
                 public void done(List<Peer> list, BmobException e) {
-                    if (e == null && !list.isEmpty()) {
+                    if (e == null) {
                         List<BmobObject> peers = new ArrayList<>();
-                        //去除掉后台已经存在会话用户
-                        for (Peer p : event.peerMap.values()) {
-                            if (!event.peerMap.containsKey(p.getId()))
-                                peers.add(p);
+                        if(!list.isEmpty()) {
+                            //去除掉后台已经存在会话用户
+                            for (Peer p : list) {
+                                if (event.peerMap.containsKey(p.getId()))
+                                    event.peerMap.remove(p.getId());
+                            }
                         }
+                        Logger.d(event.peerMap.size());
                         //如果存在后台不存在的会话用户，就将这些用户保存到后台
-                        if (!peers.isEmpty()) {
+                        if (!event.peerMap.isEmpty()) {
+                            peers.addAll(event.peerMap.values());
                             new BmobBatch().insertBatch(peers).doBatch(new QueryListListener<BatchResult>() {
                                 @Override
                                 public void done(List<BatchResult> list, BmobException e) {
@@ -204,6 +211,8 @@ public class MainActivity extends BaseActivity {
                                 }
                             });
                         }
+                    }else{
+                        toast("获取用户组失败："+e.getMessage());
                     }
                 }
             });
